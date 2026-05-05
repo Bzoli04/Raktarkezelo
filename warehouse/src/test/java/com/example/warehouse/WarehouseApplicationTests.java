@@ -9,5 +9,5 @@ class WarehouseApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
+// komment
 }
