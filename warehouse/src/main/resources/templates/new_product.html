@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Új termék</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h2>Új termék felvétele</h2>
+    <form th:action="@{/saveProduct}" th:object="${product}" method="POST" class="col-md-6">
+        <div class="mb-3">
+            <label class="form-label">Termék neve:</label>
+            <input type="text" th:field="*{name}" class="form-control">
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></p>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Kategória:</label>
+            <input type="text" th:field="*{category}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Mennyiség:</label>
+            <input type="number" th:field="*{quantity}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ár:</label>
+            <input type="number" step="0.01" th:field="*{price}" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Mentés</button>
+        <a th:href="@{/}" class="btn btn-secondary">Mégse</a>
+    </form>
+</body>
+</html>
