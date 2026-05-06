@@ -1,0 +1,267 @@
+:root {
+    --bg: #f4f7fb;
+    --surface: #ffffff;
+    --surface-muted: #f8fafc;
+    --border: #d8e0ea;
+    --text: #172033;
+    --muted: #65738a;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --success: #138a5b;
+    --danger: #dc3545;
+    --shadow: 0 16px 45px rgba(28, 38, 61, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--text);
+    background:
+        linear-gradient(180deg, #eef4ff 0, rgba(238, 244, 255, 0) 260px),
+        var(--bg);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.app-shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 48px 0;
+}
+
+.app-shell-narrow {
+    width: min(760px, calc(100% - 40px));
+}
+
+.page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 22px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-actions form {
+    margin: 0;
+}
+
+.page-kicker {
+    margin: 0 0 6px;
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.08;
+}
+
+.toolbar,
+.table-panel,
+.form-panel {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.toolbar {
+    padding: 16px;
+    margin-bottom: 18px;
+}
+
+.search-form {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) auto auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.form-control {
+    min-height: 44px;
+    border-color: var(--border);
+    border-radius: 8px;
+    color: var(--text);
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.14);
+}
+
+.btn {
+    min-height: 42px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.btn-primary {
+    border-color: var(--primary);
+    background: var(--primary);
+}
+
+.btn-primary:hover {
+    border-color: var(--primary-dark);
+    background: var(--primary-dark);
+}
+
+.btn-success {
+    border-color: var(--success);
+    background: var(--success);
+}
+
+.table-panel {
+    overflow: hidden;
+}
+
+.inventory-table {
+    margin: 0;
+    vertical-align: middle;
+}
+
+.inventory-table thead th {
+    padding: 16px 18px;
+    color: var(--muted);
+    background: var(--surface-muted);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.8rem;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.inventory-table tbody td {
+    padding: 16px 18px;
+    border-color: #edf1f6;
+}
+
+.inventory-table tbody tr:hover {
+    background: #f9fbff;
+}
+
+.product-name {
+    font-weight: 800;
+}
+
+.category-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 5px 10px;
+    border: 1px solid #cfe2ff;
+    border-radius: 999px;
+    color: #174ea6;
+    background: #eef5ff;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.empty-state {
+    padding: 28px 18px !important;
+    color: var(--muted);
+    text-align: center;
+}
+
+.form-panel {
+    padding: 26px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.form-label {
+    margin-bottom: 7px;
+    color: #2f3a4d;
+    font-weight: 800;
+}
+
+.text-danger {
+    margin: 7px 0 0;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    padding-top: 6px;
+}
+
+.login-shell {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 24px;
+}
+
+.login-panel {
+    width: min(440px, 100%);
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.login-panel h1 {
+    margin-bottom: 22px;
+}
+
+.login-form {
+    margin-top: 18px;
+}
+
+.login-hint {
+    margin: 18px 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    text-align: center;
+}
+
+@media (max-width: 720px) {
+    .app-shell,
+    .app-shell-narrow {
+        width: min(100% - 24px, 1180px);
+        padding: 28px 0;
+    }
+
+    .page-header,
+    .header-actions,
+    .form-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .search-form,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .table-panel {
+        overflow-x: auto;
+    }
+
+    .inventory-table {
+        min-width: 760px;
+    }
+}
