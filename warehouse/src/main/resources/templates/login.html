@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bejelentkezés</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<main class="login-shell">
+    <section class="login-panel">
+        <p class="page-kicker">Raktárkezelő</p>
+        <h1>Bejelentkezés</h1>
+
+        <div th:if="${param.error}" class="alert alert-danger">
+            Hibás felhasználónév vagy jelszó.
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success">
+            Sikeres kijelentkezés.
+        </div>
+
+        <form th:action="@{/login}" method="post" class="login-form">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <div class="form-group">
+                <label class="form-label" for="username">Felhasználónév</label>
+                <input id="username" name="username" type="text" class="form-control" autocomplete="username" autofocus>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="password">Jelszó</label>
+                <input id="password" name="password" type="password" class="form-control" autocomplete="current-password">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Belépés</button>
+        </form>
+
+        <p class="login-hint">Teszt felhasználó: admin / admin123</p>
+    </section>
+</main>
+</body>
+</html>

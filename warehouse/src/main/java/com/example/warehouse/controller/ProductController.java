@@ -17,8 +17,11 @@ public class ProductController {
     }
 
     @GetMapping("/")
-    public String viewHomePage(Model model) {
-        model.addAttribute("products", service.getAllProducts());
+    public String viewHomePage(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
+        String trimmedKeyword = keyword == null ? "" : keyword.trim();
+        boolean hasKeyword = !trimmedKeyword.isEmpty();
+        model.addAttribute("products", hasKeyword ? service.searchProductsByName(trimmedKeyword) : service.getAllProducts());
+        model.addAttribute("keyword", trimmedKeyword);
         return "index";
     }
 
