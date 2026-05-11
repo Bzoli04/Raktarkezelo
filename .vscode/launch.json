@@ -1,13 +1,22 @@
 {
+    // VS Code inditasi konfiguraciok listaja.
     "configurations": [
         {
+            // Java alkalmazast inditunk.
             "type": "java",
+            // A konfiguracio neve, amely a Run and Debug panelen latszik.
             "name": "Spring Boot-WarehouseApplication<warehouse>",
+            // Launch mod: uj folyamatkent inditja az alkalmazast.
             "request": "launch",
+            // A futtatas munkakonyvtara.
             "cwd": "${workspaceFolder}",
+            // A Spring Boot alkalmazas fo osztalya.
             "mainClass": "com.example.warehouse.WarehouseApplication",
+            // A Maven/Java projekt neve.
             "projectName": "warehouse",
+            // Parancssori argumentumok helye, jelenleg ures.
             "args": "",
+            // Kornyezeti valtozok opcionális fajlja.
             "envFile": "${workspaceFolder}/.env"
         }
     ]

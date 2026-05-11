@@ -1,4 +1,6 @@
 {
+    // A Java extension automatikus null-ellenorzesi modja.
     "java.compile.nullAnalysis.mode": "automatic",
+    // Build konfiguracio valtozasakor a VS Code kerdezzen ra a frissitesre.
     "java.configuration.updateBuildConfiguration": "interactive"
 }

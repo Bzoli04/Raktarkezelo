@@ -1,2 +1,5 @@
+# A Unix shell script LF sortorest hasznaljon, hogy Linux/macOS alatt is helyesen fusson.
 /mvnw text eol=lf
+
+# A Windows batch script CRLF sortorest hasznaljon, mert Windows alatt ez a megszokott.
 *.cmd text eol=crlf

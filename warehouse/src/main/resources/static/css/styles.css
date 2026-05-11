@@ -1,4 +1,5 @@
 :root {
+    /* Kozponti szin- es arnyekvaltozok, hogy a teljes felulet konnyen hangolhato legyen. */
     --bg: #f4f7fb;
     --surface: #ffffff;
     --surface-muted: #f8fafc;
@@ -13,10 +14,12 @@
 }
 
 * {
+    /* A padding es border beleszamit az elemek teljes meretebe, igy stabilabb a layout. */
     box-sizing: border-box;
 }
 
 body {
+    /* Alap oldalstilus: teljes magassag, betutipus, szovegszin es finom hatter. */
     min-height: 100vh;
     margin: 0;
     color: var(--text);
@@ -27,16 +30,19 @@ body {
 }
 
 .app-shell {
+    /* A fo tartalom maximalis szelessege es kozepre igazito kontenere. */
     width: min(1180px, calc(100% - 40px));
     margin: 0 auto;
     padding: 48px 0;
 }
 
 .app-shell-narrow {
+    /* Szukebb valtozat olyan oldalakhoz, ahol csak egy urlap van. */
     width: min(760px, calc(100% - 40px));
 }
 
 .page-header {
+    /* A cimblokkot es a muveleti gombokat egy sorba rendezi. */
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -45,16 +51,19 @@ body {
 }
 
 .header-actions {
+    /* A fejlec jobb oldali gombjait egymas melle teszi. */
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 .header-actions form {
+    /* Eltavolitja a form alap margojat, hogy a gombok egy vonalban legyenek. */
     margin: 0;
 }
 
 .page-kicker {
+    /* Kis, nagybetus felirat a fo cim felett. */
     margin: 0 0 6px;
     color: var(--primary);
     font-size: 0.8rem;
@@ -64,6 +73,7 @@ body {
 }
 
 h1 {
+    /* Nagy oldalfo cim, amely reszponzivan meretezodik. */
     margin: 0;
     font-size: clamp(2rem, 4vw, 2.8rem);
     font-weight: 800;
@@ -73,6 +83,7 @@ h1 {
 .toolbar,
 .table-panel,
 .form-panel {
+    /* Kozos panelstilus a keresohoz, tablazathoz es urlaphoz. */
     border: 1px solid var(--border);
     border-radius: 8px;
     background: var(--surface);
@@ -80,11 +91,13 @@ h1 {
 }
 
 .toolbar {
+    /* Keresopanel belso terkoze es also tavolsaga. */
     padding: 16px;
     margin-bottom: 18px;
 }
 
 .search-form {
+    /* A kereso inputot es gombokat racsba rendezi. */
     display: grid;
     grid-template-columns: minmax(220px, 1fr) auto auto;
     gap: 10px;
@@ -92,6 +105,7 @@ h1 {
 }
 
 .form-control {
+    /* Kozos input stilus a Bootstrap alapokon felul. */
     min-height: 44px;
     border-color: var(--border);
     border-radius: 8px;
@@ -99,41 +113,49 @@ h1 {
 }
 
 .form-control:focus {
+    /* Fokuszban kek keretet es enyhe kiemelest kap az aktiv mezo. */
     border-color: var(--primary);
     box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.14);
 }
 
 .btn {
+    /* Minden gomb azonos magassagot, lekerekitest es betusulyt kap. */
     min-height: 42px;
     border-radius: 8px;
     font-weight: 700;
 }
 
 .btn-primary {
+    /* Elsodleges muvelet, peldaul uj termek vagy belepes. */
     border-color: var(--primary);
     background: var(--primary);
 }
 
 .btn-primary:hover {
+    /* Hover allapot az elsodleges gombhoz. */
     border-color: var(--primary-dark);
     background: var(--primary-dark);
 }
 
 .btn-success {
+    /* Sikeres/mentesi muvelet zold szinnel. */
     border-color: var(--success);
     background: var(--success);
 }
 
 .table-panel {
+    /* A tablazatot a panelen belul tartja, mobilon pedig gorgetheto lesz. */
     overflow: hidden;
 }
 
 .inventory-table {
+    /* A termektabla ne kapjon kulso margot, es a cellak tartalma kozepre igazodjon fuggolegesen. */
     margin: 0;
     vertical-align: middle;
 }
 
 .inventory-table thead th {
+    /* Tablazatfejlec: tomor, halvany hatteru, nagybetus oszlopcimek. */
     padding: 16px 18px;
     color: var(--muted);
     background: var(--surface-muted);
@@ -144,19 +166,23 @@ h1 {
 }
 
 .inventory-table tbody td {
+    /* Tablazat cellak belso terkoze es elvalaszto vonala. */
     padding: 16px 18px;
     border-color: #edf1f6;
 }
 
 .inventory-table tbody tr:hover {
+    /* Sor kiemelese egerrel ravive. */
     background: #f9fbff;
 }
 
 .product-name {
+    /* A termek neve legyen vizualisan hangsulyosabb. */
     font-weight: 800;
 }
 
 .category-badge {
+    /* Cimkeszeru megjelenes a kategoriahoz. */
     display: inline-flex;
     align-items: center;
     min-height: 30px;
@@ -170,44 +196,52 @@ h1 {
 }
 
 .empty-state {
+    /* Ures kereses eseten kozepre igazitott visszajelzes. */
     padding: 28px 18px !important;
     color: var(--muted);
     text-align: center;
 }
 
 .form-panel {
+    /* Az urlapot tartalmazo panel belso terkoze. */
     padding: 26px;
 }
 
 .form-group {
+    /* Egy label-input-hibauzenet blokk also tavolsaga. */
     margin-bottom: 18px;
 }
 
 .form-grid {
+    /* A mennyiseg es ar mezok ket oszlopba kerulnek nagyobb kijelzon. */
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
 }
 
 .form-label {
+    /* Urlapcimkek hangsulyos, jol olvashato stilusa. */
     margin-bottom: 7px;
     color: #2f3a4d;
     font-weight: 800;
 }
 
 .text-danger {
+    /* Validacios hibauzenetek merete es tavolsaga. */
     margin: 7px 0 0;
     font-size: 0.92rem;
     font-weight: 700;
 }
 
 .form-actions {
+    /* Az urlap aljan levo muveleti gombok egymas melle rendezese. */
     display: flex;
     gap: 10px;
     padding-top: 6px;
 }
 
 .login-shell {
+    /* A bejelentkezesi panelt teljes kepernyon kozepre helyezi. */
     display: grid;
     min-height: 100vh;
     place-items: center;
@@ -215,6 +249,7 @@ h1 {
 }
 
 .login-panel {
+    /* A login kartya szelessege, kerete, hattere es arnyeka. */
     width: min(440px, 100%);
     padding: 32px;
     border: 1px solid var(--border);
@@ -224,14 +259,17 @@ h1 {
 }
 
 .login-panel h1 {
+    /* Tavolsag a login cim es az uzenetek/urlap kozott. */
     margin-bottom: 22px;
 }
 
 .login-form {
+    /* Tavolsag a login uzenetek es az urlap kozott. */
     margin-top: 18px;
 }
 
 .login-hint {
+    /* Teszt felhasznalo informacio halvanyabb, kozepre igazitott szoveggel. */
     margin: 18px 0 0;
     color: var(--muted);
     font-size: 0.92rem;
@@ -239,6 +277,7 @@ h1 {
 }
 
 @media (max-width: 720px) {
+    /* Mobil nezet: kisebb margok es egymas ala rendezett elemek. */
     .app-shell,
     .app-shell-narrow {
         width: min(100% - 24px, 1180px);
@@ -248,20 +287,24 @@ h1 {
     .page-header,
     .header-actions,
     .form-actions {
+        /* Fejlec es gombcsoportok mobilon teljes szelessegben egymas ala kerulnek. */
         align-items: stretch;
         flex-direction: column;
     }
 
     .search-form,
     .form-grid {
+        /* Mobilon a kereso es az urlap racsai egy oszloposak. */
         grid-template-columns: 1fr;
     }
 
     .table-panel {
+        /* Keskeny kijelzon a szeles tablazat vizszintesen gorgetheto. */
         overflow-x: auto;
     }
 
     .inventory-table {
+        /* Minimalis tablazatszelesseg, hogy az oszlopok ne torjenek ossze. */
         min-width: 760px;
     }
 }

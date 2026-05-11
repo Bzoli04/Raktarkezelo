@@ -1,20 +1,26 @@
 <!DOCTYPE html>
+<!-- Thymeleaf sablon az uj termek felviteli urlapjahoz. -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!-- Alap metaadatok es stiluslapok. -->
     <meta charset="UTF-8">
     <title>Új termék</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
+<!-- Szukebb oldal-kontener, mert itt csak egy urlap van. -->
 <main class="app-shell app-shell-narrow">
+    <!-- Fejlec: oldal cim, vissza link es kijelentkezes. -->
     <header class="page-header">
         <div>
             <p class="page-kicker">Termékadatok</p>
             <h1>Új termék felvétele</h1>
         </div>
         <div class="header-actions">
+            <!-- Visszavisz a termeklistara mentes nelkul. -->
             <a th:href="@{/}" class="btn btn-outline-secondary">Vissza</a>
+            <!-- Biztonsagos kijelentkezes CSRF tokennel. -->
             <form th:action="@{/logout}" method="post">
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                 <button type="submit" class="btn btn-outline-secondary">Kilépés</button>
@@ -22,30 +28,38 @@
         </div>
     </header>
 
+    <!-- Az urlap a Product objektumhoz van kotve, es POST-tal kuldi a /saveProduct utvonalra. -->
     <form th:action="@{/saveProduct}" th:object="${product}" method="POST" class="form-panel">
+        <!-- CSRF token a Spring Security vedelmehez. -->
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <!-- Termeknev mezo es a hozza tartozo validacios hibauzenet. -->
         <div class="form-group">
             <label class="form-label">Termék neve</label>
             <input type="text" th:field="*{name}" class="form-control">
             <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></p>
         </div>
+        <!-- Kategoria mezo es hibauzenet. -->
         <div class="form-group">
             <label class="form-label">Kategória</label>
             <input type="text" th:field="*{category}" class="form-control">
             <p th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="text-danger"></p>
         </div>
+        <!-- A mennyiseg es ar mezok ketoszlopos racsban jelennek meg nagyobb kijelzon. -->
         <div class="form-grid">
-        <div class="form-group">
-            <label class="form-label">Mennyiség</label>
-            <input type="number" min="1" th:field="*{quantity}" class="form-control">
-            <p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="text-danger"></p>
+            <div class="form-group">
+                <!-- Mennyiseg: legalabb 1, es a backend validacio is ellenorzi. -->
+                <label class="form-label">Mennyiség</label>
+                <input type="number" min="1" th:field="*{quantity}" class="form-control">
+                <p th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="text-danger"></p>
+            </div>
+            <div class="form-group">
+                <!-- Ar: tizedes ertek is megadhato, minimum 0.01. -->
+                <label class="form-label">Ár</label>
+                <input type="number" min="0.01" step="0.01" th:field="*{price}" class="form-control">
+                <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></p>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="form-label">Ár</label>
-            <input type="number" min="0.01" step="0.01" th:field="*{price}" class="form-control">
-            <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></p>
-        </div>
-        </div>
+        <!-- Urlap muveletek: mentes vagy visszalepes a listara. -->
         <div class="form-actions">
             <button type="submit" class="btn btn-success">Mentés</button>
             <a th:href="@{/}" class="btn btn-outline-secondary">Mégse</a>

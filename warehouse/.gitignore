@@ -1,10 +1,18 @@
+# Spring Boot altal generalhato segedfajl, nem kell verziokezelesbe.
 HELP.md
+
+# Maven build kimenet; barmikor ujrageneralhato.
 target/
+
+# A Maven Wrapper jar generalt/fuggosegi fajl, nem sajat forraskod.
 .mvn/wrapper/maven-wrapper.jar
+
+# Ha valaki src alatt hasznal target mappat, azt megis engedjuk kovetni.
 !**/src/main/**/target/
 !**/src/test/**/target/
 
 ### STS ###
+# Spring Tool Suite / Eclipse altal generalt projektfajlok.
 .apt_generated
 .classpath
 .factorypath
@@ -14,12 +22,14 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
+# IntelliJ IDEA helyi projektbeallitasai.
 .idea
 *.iws
 *.iml
 *.ipr
 
 ### NetBeans ###
+# NetBeans build es helyi projektmappak.
 /nbproject/private/
 /nbbuild/
 /dist/
@@ -30,4 +40,5 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
+# Helyi VS Code munkater-beallitasok.
 .vscode/

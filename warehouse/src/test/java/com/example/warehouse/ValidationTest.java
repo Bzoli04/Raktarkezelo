@@ -7,47 +7,52 @@ import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+// A Product osztaly validacios szabalyait ellenorzo unit tesztek.
 class ValidationTest {
 
+    // A Validator futtatja le a Product mezoin levo jakarta.validation annotaciokat.
     private Validator validator;
 
+    // Minden teszt elott uj validatort keszitunk, hogy tiszta allapotbol induljon a vizsgalat.
     @BeforeEach
     void setUp() {
-        // Ez készíti elő a validátort minden teszt előtt
+        // Ez kesziti elo a validatort minden teszt elott.
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
     }
 
+    // Hibasan kitoltott termeknel validacios hibakat varunk.
     @Test
     void testInvalidProduct() {
-        // 1. Létrehozunk egy direkt hibás terméket (pl. üres névvel)
+        // 1. Letrehozunk egy direkt hibas termeket, peldaul ures nevvel es negativ arral.
         Product product = new Product();
-        product.setName(""); 
+        product.setName("");
         product.setPrice(-100.0);
 
-        // 2. Lefuttatjuk a validációt
+        // 2. Lefuttatjuk a validaciot a Product objektumon.
         var violations = validator.validate(product);
 
-        // 3. Ellenőrizzük, hogy TALÁLT-E hibát (nem üres a hibalista)
-        assertFalse(violations.isEmpty(), "A validációnak hibát kellene jeleznie üres név és negatív ár esetén!");
+        // 3. Ellenorizzuk, hogy talalt-e hibat, vagyis nem ures a hibalista.
+        assertFalse(violations.isEmpty(), "A validacionak hibat kellene jeleznie ures nev es negativ ar eseten!");
     }
 
+    // Helyesen kitoltott termeknel nem szabad validacios hibanak lennie.
     @Test
     void testValidProduct() {
-        // Létrehozunk egy teljesen jó terméket
+        // Letrehozunk egy teljesen jo termeket minden kotelezo mezovel.
         Product product = new Product();
-        product.setName("Rendes Termék");
-        product.setCategory("Kategória");
+        product.setName("Rendes Termek");
+        product.setCategory("Kategoria");
         product.setQuantity(10);
         product.setPrice(1000.0);
 
+        // A validacio eredmenye akkor jo, ha nem tartalmaz hibat.
         var violations = validator.validate(product);
 
-        // Ellenőrizzük, hogy NINCS hiba
-        assertTrue(violations.isEmpty(), "Egy érvényes termék esetén nem szabadna hibát találnia!");
+        // Ellenorizzuk, hogy nincs hiba.
+        assertTrue(violations.isEmpty(), "Egy ervenyes termek eseten nem szabadna hibat talalnia!");
     }
 }
